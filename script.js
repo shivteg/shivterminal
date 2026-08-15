@@ -145,12 +145,10 @@ async function sendMessage(text) {
                 'Authorization': `Bearer ${grokApiKey}`
             },
             body: JSON.stringify({
-                model: "grok-beta",
+                model: "grok-2-latest",
                 messages: messages
             })
         });
-        
-        const data = await response.json();
         
         // Remove loading indicator
         const loadingElement = document.getElementById(loadingId);
@@ -163,8 +161,12 @@ async function sendMessage(text) {
                 localStorage.removeItem('GROK_API_KEY');
                 throw new Error("Invalid API Key! The key has been cleared. Please enter a valid Grok API Key.");
             }
-            throw new Error(data.error?.message || 'Server error');
+            // Read raw error from the API to show exactly what's failing
+            const errorText = await response.text();
+            throw new Error(`API Error ${response.status}: ${errorText}`);
         }
+        
+        const data = await response.json();
         
         // Append AI response
         const reply = data.choices[0].message.content;
