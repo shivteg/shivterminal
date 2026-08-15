@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus AI Terminal</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include marked.js to render Markdown like in the terminal -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="window-controls">
+                <span class="control close"></span>
+                <span class="control minimize"></span>
+                <span class="control maximize"></span>
+            </div>
+            <div class="terminal-title">Nexus - Web Interface</div>
+        </div>
+        <div class="terminal-body" id="chat-box">
+            <!-- Chat messages injected via JavaScript -->
+        </div>
+        <div class="terminal-input-area">
+            <span class="prompt-symbol">❯</span>
+            <input type="text" id="user-input" autocomplete="off" placeholder="Type a message or /help..." autofocus>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
