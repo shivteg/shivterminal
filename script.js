@@ -145,7 +145,7 @@ async function sendMessage(text) {
                 'Authorization': `Bearer ${grokApiKey}`
             },
             body: JSON.stringify({
-                model: "grok-2-latest",
+                model: "grok-4.6",
                 messages: messages
             })
         });
