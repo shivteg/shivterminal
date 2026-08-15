@@ -120,7 +120,7 @@ function handleCommand(cmd) {
 async function sendMessage(text) {
     // If the user hasn't set their API key yet, the first input is treated as the key
     if (!grokApiKey) {
-        grokApiKey = text.trim();
+        grokApiKey = text.trim().replace(/['"]/g, ''); // Strip any accidental quotes
         localStorage.setItem('GROK_API_KEY', grokApiKey);
         appendMessage('', '<strong style="color:var(--success-color, #c3e88d)">API Key saved securely in your browser!</strong><br>You can now start chatting. Type <span style="color:var(--user-color)">/help</span> to see commands.', 'system');
         return;
